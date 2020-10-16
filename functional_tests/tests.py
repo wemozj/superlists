@@ -3,9 +3,10 @@ import time
 import unittest
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+from django.test import LiveServerTestCase
 
 
-class NewVisitorTest(unittest.TestCase):
+class NewVisitorTest(LiveServerTestCase):
 
     def setUp(self):
         self.browser = webdriver.Firefox(executable_path=r"D:\webDrivers\geckodriver.exe")
@@ -21,7 +22,8 @@ class NewVisitorTest(unittest.TestCase):
     def test_can_start_a_list_and_retrieve_it_later(self):
         # wemo听说有一个很酷的在线待办事项应用
         # 她去看了这个应用的首页
-        self.browser.get('http://localhost:8000')
+        # self.browser.get('http://localhost:8000')
+        self.browser.get(self.live_server_url)
         # 她注意到网页的标题和头部都包含“TO-DO"这个词
         self.assertIn('To-Do', self.browser.title)
         header_text = self.browser.find_element_by_tag_name('h1').text
@@ -57,9 +59,5 @@ class NewVisitorTest(unittest.TestCase):
         self.fail(msg='Finish the test!')
         # 她访问那个URL，发现她的待办事项列表还在
         # 她很满意，去睡觉了
-
-
-if __name__ == '__main__':
-    unittest.main()
 
 

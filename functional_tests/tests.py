@@ -7,11 +7,12 @@ from django.test import LiveServerTestCase
 from selenium.common.exceptions import WebDriverException
 
 MAX_WAIT = 10
+Firefox_driver_path = r"D:\webDrivers\geckodriver.exe"
 
 class NewVisitorTest(LiveServerTestCase):
 
     def setUp(self):
-        self.browser = webdriver.Firefox(executable_path=r"D:\webDrivers\geckodriver.exe")
+        self.browser = webdriver.Firefox(executable_path=Firefox_driver_path)
 
     def tearDown(self):
         self.browser.quit()
@@ -78,7 +79,7 @@ class NewVisitorTest(LiveServerTestCase):
         # 我们使用一个新浏览器对话
         # 确保wemo的信息不会从cookie中泄露出去
         self.browser.quit()
-        self.browser = webdriver.Firefox()
+        self.browser = webdriver.Firefox(executable_path=Firefox_driver_path)
         # 弗朗西斯访问首页
         # 页面中看不到wemo的清单
         self.browser.get(self.live_server_url)

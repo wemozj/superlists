@@ -88,6 +88,7 @@ class NewVisitorTest(LiveServerTestCase):
         self.assertNotIn('make a fly', page_text)
         # 弗朗西斯输入一个新待事项，新建一个清单
         # 他不像wemo那样兴趣盎然
+        inputbox = self.browser.find_element_by_id('id_new_item')
         inputbox.send_keys('Buy milk')
         inputbox.send_keys(Keys.ENTER)
         self.wait_for_row_in_list_table('1: Buy milk')

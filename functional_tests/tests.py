@@ -1,6 +1,8 @@
 # author: wemo  time:2020/10/12
 import time
 import unittest
+
+from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from django.test import LiveServerTestCase
@@ -9,7 +11,7 @@ from selenium.common.exceptions import WebDriverException
 MAX_WAIT = 10
 Firefox_driver_path = r"D:\webDrivers\geckodriver.exe"
 
-class NewVisitorTest(LiveServerTestCase):
+class NewVisitorTest(StaticLiveServerTestCase):
 
     def setUp(self):
         self.browser = webdriver.Firefox(executable_path=Firefox_driver_path)

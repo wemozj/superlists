@@ -89,7 +89,7 @@ DATABASES = {
         'NAME'   : 'lists_db',
         'USER'   : 'ubuntu',
         'PASSWORD' : '1995zj',
-        'HOST'   : '127.0.0.1',
+        'HOST'   : 'localhost',
         'PORT'   : '3306',
     },
 }

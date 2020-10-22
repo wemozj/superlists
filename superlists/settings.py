@@ -87,7 +87,7 @@ DATABASES = {
     'default' :{
         'ENGINE' : 'django.db.backends.mysql',
         'NAME'   : 'lists_db',
-        'USER'   : 'root',
+        'USER'   : 'ubuntu',
         'PASSWORD' : '1995zj',
         'HOST'   : '127.0.0.1',
         'PORT'   : '3306',

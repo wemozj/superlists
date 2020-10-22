@@ -9,12 +9,13 @@ from selenium.webdriver.common.keys import Keys
 
 MAX_WAIT = 10
 Firefox_driver_path = r"D:\webDrivers\geckodriver.exe"
+STAGING_SERVER = "wemo.top"
 
 class NewVisitorTest(StaticLiveServerTestCase):
 
     def setUp(self):
         self.browser = webdriver.Firefox(executable_path=Firefox_driver_path)
-        staging_server = os.environ.get('STAGING_SERVER')
+        staging_server = os.environ.get('STAGING_SERVER', STAGING_SERVER)
         if staging_server:
             self.live_server_url = 'http://' + staging_server
 

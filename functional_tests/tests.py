@@ -9,7 +9,7 @@ from selenium.webdriver.common.keys import Keys
 
 MAX_WAIT = 10
 Firefox_driver_path = r"D:\webDrivers\geckodriver.exe"
-STAGING_SERVER = "wemo.top"
+STAGING_SERVER = "www.wemo.top"
 
 class NewVisitorTest(StaticLiveServerTestCase):
 

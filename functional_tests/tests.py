@@ -6,14 +6,17 @@ from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from selenium import webdriver
 from selenium.common.exceptions import WebDriverException
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.firefox.options import Options
 
 MAX_WAIT = 10
-# Firefox_driver_path = r"D:\webDrivers\geckodriver.exe"
+
+options = Options()
+options.headless = True
 
 class NewVisitorTest(StaticLiveServerTestCase):
 
     def setUp(self):
-        self.browser = webdriver.Firefox()
+        self.browser = webdriver.Firefox(options=options)
         staging_server = os.environ.get('STAGING_SERVER')
         if staging_server:
             self.live_server_url = 'http://' + staging_server
@@ -83,7 +86,7 @@ class NewVisitorTest(StaticLiveServerTestCase):
         # 我们使用一个新浏览器对话
         # 确保wemo的信息不会从cookie中泄露出去
         self.browser.quit()
-        self.browser = webdriver.Firefox(executable_path=Firefox_driver_path)
+        self.browser = webdriver.Firefox(options=options)
         # 弗朗西斯访问首页
         # 页面中看不到wemo的清单
         self.browser.get(self.live_server_url)
